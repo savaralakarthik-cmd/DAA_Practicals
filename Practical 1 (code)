@@ -1,0 +1,60 @@
+#include <iostream>
+using namespace std;
+
+class selectionsort {
+public:
+    int arr[100], size, i, j, temp;
+
+    void getinput() {
+        cout << "Enter size of array: ";
+        cin >> size;
+
+        cout << "Enter array elements:\n";
+        for (i = 0; i < size; i++) {
+            cin >> arr[i];
+        }
+    }
+
+    void printelements() {
+        for (i = 0; i < size; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+
+    void logic() {
+        for (i = 0; i < size - 1; i++) {
+            int min = i;
+
+            // Find the minimum element
+            for (j = i + 1; j < size; j++) {
+                if (arr[j] < arr[min]) {
+                    min = j;
+                }
+            }
+
+            // Swap the minimum element with the current element
+            if (min != i) {
+                temp = arr[i];
+                arr[i] = arr[min];
+                arr[min] = temp;
+            }
+        }
+    }
+};
+
+int main() {
+    selectionsort selection;
+
+    selection.getinput();
+
+    cout << "\nBefore sorting: ";
+    selection.printelements();
+
+    selection.logic();
+
+    cout << "After sorting: ";
+    selection.printelements();
+
+    return 0;
+}
